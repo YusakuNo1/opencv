@@ -682,6 +682,16 @@ TEST_P(Test_ONNX_layers, Compare_LT)
     testONNXModels("less");
 }
 
+TEST_P(Test_ONNX_layers, Compare_GTorEQ)
+{
+    testONNXModels("greater_or_equal");
+}
+
+TEST_P(Test_ONNX_layers, Compare_LEorEQ)
+{
+    testONNXModels("less_or_equal");
+}
+
 TEST_P(Test_ONNX_layers, CompareSameDims_EQ)
 {
 #if defined(INF_ENGINE_RELEASE) && INF_ENGINE_VER_MAJOR_EQ(2022010000)
@@ -1170,6 +1180,20 @@ TEST_P(Test_ONNX_layers, Slice_Steps_5DInput)
 #endif
 
     testONNXModels("slice_opset_11_steps_5d");
+}
+
+TEST_P(Test_ONNX_layers, Slice_Nonseq_Axes)
+{
+    testONNXModels("slice_nonseq_axes");
+    testONNXModels("slice_nonseq_axes_steps");
+    testONNXModels("slice_nonseq_miss_axes_steps");
+}
+
+TEST_P(Test_ONNX_layers, Slice_Neg_Axes)
+{
+    testONNXModels("slice_neg_axes");
+    testONNXModels("slice_neg_axes_steps");
+    testONNXModels("slice_neg_miss_axes_steps");
 }
 
 TEST_P(Test_ONNX_layers, Softmax)
